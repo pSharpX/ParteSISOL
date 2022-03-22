@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Especialidad>;
+@{
+    ViewData["Title"]="Especialidades";
+}
+
+<h1>Estimado usuario por favor seleccione el Servicio a atenderse</h1>
+
+ <table class="table">
+      <thead>
+          <tr>
+              <th>Acciones</th>
+              
+              <th>Nombre</th>
+          </tr>
+      </thead>
+      <tbody id="reordenable">
+        @foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Idespecialidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EspecialidadName)
+        </td>
+     
+        
+    </tr>
+}
+    </tbody>
+  </table>
+
+ }

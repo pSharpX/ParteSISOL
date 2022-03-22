@@ -1,0 +1,54 @@
+﻿@model HomeIndexViewModel
+
+@{
+    ViewData["Title"] = "EspecialidadDenominacion";
+}
+
+<h1>Estimado usuario por favor seleccione el Servicio a atenderse</h1>
+
+<div id="divSedes" style="border:1px solid red; height:300px;display:block;width:100%">
+
+</div>
+
+<div id="partial1" class="container">
+    @Html.Partial("_EspecialidadDenominacion1", Model.especialidadDenominacion)
+</div>
+
+@*@section scripts{
+    <script type="text/javascript">
+        function Update() {
+            $.ajax({
+                url: "@Url.Action("_EspecialidadDenominacion1")",
+                type: "POST",
+                datatype: "HTML",
+                data: // tus datos,
+                success: function (data) {
+                    $("#partial1").html(data);
+                }
+            })
+            $.ajax({
+                url: "@Url.Action("_EspecialidadDenominacion2")",
+                type: "POST",
+                datatype: "HTML",
+                data: // tus datos,
+                success: function (data) {
+                    $("#partial2").html(data);
+                }
+            });
+        }
+    </script>
+}*@
+
+
+@*
+    
+<partial name="_EspecialidadDenominacion1" for=especialidadDenominacion1 />
+<partial name="_EspecialidadDenominacion2" />
+<partial name="_EspecialidadDenominacion3" />
+<partial name="_EspecialidadDenominacion4" />
+<partial name="_EspecialidadDenominacion5" />
+
+ *@
+
+
+ 

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<EspecialidadDenominacion>
+
+@if (Model is not null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Acciones</th>
+
+                <th>Nombre</th>
+            </tr>
+        </thead>
+        <tbody id="reordenable">
+            @foreach (var item in Model)
+            {
+                <tr onclick="getIpress(@Html.DisplayFor(modelItem => item.Idespecialidad))">
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Especialidad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Denominacion)
+                    </td>
+                    <td>
+
+
+                </tr>
+            }
+        </tbody>
+
+    </table>
+}
+<div id=divSedes></div>
+ <script>
+
+
+ 
+  var getIpress = function(Idespecialidad){
+
+
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("Sedes", "EspecialidadDenominacion")",
+                dataType: 'json',
+                data: {"Idespecialidad":Idespecialidad},
+            }).fail(function(r){
+                console.log("fail",r);
+            }).always(function(r){
+                console.log('always')
+                $("#divSedes").html(r.responseText)
+            });
+        }
+         
+        //$(document).ready(function(){
+        //    $("getIpress").click(function(){
+        //    $("divSedes").load("Sedes")
+        //    } })
+        
+ 
+ </script>

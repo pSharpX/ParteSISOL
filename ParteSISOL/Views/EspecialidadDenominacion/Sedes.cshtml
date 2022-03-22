@@ -1,0 +1,63 @@
+﻿@model IEnumerable<EspecialidadDenominacion>;
+
+@if (Model is not null)
+{
+ <table class="table">
+      <thead>
+          <tr>
+              <th>Acciones</th>
+              
+              <th>Nombre</th>
+          </tr>
+      </thead>
+      <tbody id="reordenable">
+        @foreach (var item in Model) {
+            <tr onclick="getSede(@Html.DisplayFor(modelItem => item.Idespecialidad))">
+                <td>
+            @Html.DisplayFor(modelItem => item.Idsede)
+            </td>
+            <td>
+            @Html.DisplayFor(modelItem => item.Sede)
+        </td>
+     
+        
+           </tr>
+            }
+    </tbody>
+  </table>
+
+
+}
+<div id=divSedes></div>
+<script>
+  var getSede = function(Idespecialidad){
+
+
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("SedeEspecialidad", "EspecialidadDenominacion")",
+                dataType: 'json',
+                data: {"Idespecialidad":Idespecialidad},
+            }).fail(function(r){
+                console.log("fail",r);
+            }).always(function(r){
+                console.log('always')
+                $("#divSedes").html(redireccion)
+            });
+        }
+</script>
+@*<script>
+var getSede = function(Idsede){
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("SedeEspecialidad", "EspecialidadDenominacion")",
+                dataType: 'json',
+                data: {"Idespecialidad":Idespecialidad},
+            }).fail(function(r){
+                console.log("fail",r);
+            }).always(function(r){
+                console.log('always')
+                $("#divSedes").html(r.responseText)
+            });
+        }
+</script>*@
